@@ -6,15 +6,15 @@ namespace AutoPark.DAL.Entities
     public class Vehicle
     {
         public int Id { get; set; }
-        public string ModelName { get; set; }
-        public string RegistrationNumber { get; set; }
+        public string Model_Name { get; set; }
+        public string Registration_Number { get; set; }
         public int Weight { get; set; }
-        public int ManufactureYear { get; set; }
+        public int Manufacture_Year { get; set; }
         public int Mileage { get; set; }
         public Colors Color { get; set; }
         public int Volume { get; set; }
 
-        public int VehicleTypeId { get; set; }
+        public int Vehicle_Type_Id { get; set; }
         public VehicleType VehicleType { get; set; }
         
         public ICollection<Order> Orders { get; set; }
