@@ -1,0 +1,30 @@
+@model VehicleType
+
+@{
+    Layout = "~/Views/DefaultLayout.cshtml";
+}
+
+@{
+    ViewData["Title"] = "New Type";
+}
+<h2>@ViewData["Title"]</h2>
+<br/>
+<form asp-action="Create" asp-controller="VehicleType">
+    <div>
+        <div class="form-group">
+            <label asp-for="Type_Name">Type Name:</label>
+            <input type="text" asp-for="Type_Name" class="form-control form-control-sm" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Tax_Coefficient">Tax Coefficient:</label>
+            <input asp-for="Tax_Coefficient" class="form-control  form-control-sm" />
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Save" class="btn btn-success" />
+        </div>
+    </div>
+</form>
+ 
+<div>
+    <a asp-action="Index" asp-controller="VehicleType">Back to List</a>
+</div>

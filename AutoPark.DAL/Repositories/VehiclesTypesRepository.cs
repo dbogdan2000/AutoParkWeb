@@ -33,16 +33,25 @@ namespace AutoPark.DAL.Repositories
             }
         }
 
-        public async void Create(VehicleType item)
+        public async Task Create(VehicleType type)
         {
             await using (connection)
             {
                 await connection.ExecuteAsync(
-                    "insert into vehicle_types(type_name, tax_coefficient) values(@TypeName, @TaxCoefficient)", item);
+                    "insert into vehicle_types(type_name, tax_coefficient) values(@Type_Name, @Tax_Coefficient)", type);
             }
         }
 
-        public async void Delete(int id)
+        public async Task Update(VehicleType type)
+        {
+            await using (connection)
+            {
+                await connection.ExecuteAsync(
+                    "update vehicle_types set type_name = @Type_Name, tax_coefficient = @Tax_Coefficient where id = @Id", type);
+            }
+        }
+
+        public async Task Delete(int id)
         {
             await using (connection)
             {

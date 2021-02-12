@@ -7,7 +7,8 @@ namespace AutoPark.DAL.Interfaces
     {
         Task<IEnumerable<T>> GetAll();
         Task<T> Get(int id);
-        void Create(T item);
-        void Delete(int id);
+        Task Create(T item);
+        Task Update(T item);
+        Task Delete(int id);
     }
 }
