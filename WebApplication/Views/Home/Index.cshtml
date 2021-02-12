@@ -1,0 +1,22 @@
+@{
+    Layout = "~/Views/DefaultLayout.cshtml";
+}
+
+@{
+    ViewData["Title"] = "AutoPark Web";
+}
+<h2>@ViewData["Title"]</h2>
+<br/>
+<table class="table">
+    <br/>
+    <tr>
+        <th>
+            Vehicles types list
+            <br/>
+            <a asp-controller="VehicleType" asp-action="Index">
+                <button type="submit" class="btn btn-primary">View</button>
+            </a>
+        </th>
+        <th>Vehicles list</th>
+    </tr>
+</table>
