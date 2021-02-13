@@ -22,16 +22,9 @@ namespace WebApplication.Controllers
         public async Task<ActionResult> Index(string sortParameter)
         {
             var vehicles = await _vehiclesRepository.GetAll();
-            var types = await _vehiclesTypesRepository.GetAll();
             foreach (var vehicle in vehicles)
             {
-                foreach (var type in types)
-                {
-                    if (vehicle.Vehicle_Type_Id == type.Id)
-                    {
-                        vehicle.VehicleType = type;
-                    }
-                }
+                vehicle.VehicleType = await _vehiclesTypesRepository.Get(vehicle.Vehicle_Type_Id);
             }
             switch (sortParameter)
             {

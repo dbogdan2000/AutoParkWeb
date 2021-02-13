@@ -29,6 +29,8 @@ namespace WebApplication
             services.AddMvc();
             services.AddTransient<IRepository<VehicleType>, VehiclesTypesRepository >(provider => new VehiclesTypesRepository(_config.ConnectionString));
             services.AddTransient<IRepository<Vehicle>, VehiclesRepository>(provider => new VehiclesRepository(_config.ConnectionString));
+            services.AddTransient<IRepository<Part>, PartsRepository>(provider =>
+                new PartsRepository(_config.ConnectionString));
             services.AddControllersWithViews();
         }
 

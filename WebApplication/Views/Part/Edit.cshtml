@@ -1,0 +1,27 @@
+@model Part
+
+@{
+    Layout = "~/Views/DefaultLayout.cshtml";
+}
+
+@{
+    ViewData["Title"] = "Edit Part";
+}
+<h2>@ViewData["Title"]</h2>
+<br/>
+<form asp-action="EditConfirm" asp-controller="Part">
+    <div>
+        <input type="hidden" asp-for="Id" />
+        <div class="form-group">
+            <label asp-for="Part_Name">Part Name:</label>
+            <input type="text" asp-for="Part_Name" class="form-control form-control-sm"/>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Save" class="btn btn-success"/>
+        </div>
+    </div>
+</form>
+ 
+<div>
+    <a asp-action="Index" asp-controller="Part">Back to List</a>
+</div>
