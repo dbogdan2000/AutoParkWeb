@@ -22,38 +22,26 @@ namespace AutoPark.DAL.Repositories
 
         public async Task<Vehicle> Get(int id)
         {
-            await using (connection)
-            {
-                return await connection.QueryFirstAsync<Vehicle>("select * from vehicles where id = @id ", new {id});
-            }
+            return await connection.QueryFirstAsync<Vehicle>("select * from vehicles where id = @id ", new {id});
         }
 
         public async Task Create(Vehicle vehicle)
         {
-            await using (connection)
-            {
-                await connection.ExecuteAsync(
+            await connection.ExecuteAsync(
                     "insert into vehicles(model_name, registration_number, weight, manufacture_year, mileage, color, volume, vehicle_type_id)" +
                     "values(@Model_Name, @Registration_Number, @Weight, @Manufacture_Year, @Mileage, @Color, @Volume, @Vehicle_Type_Id)", vehicle);
-            }
         }
 
         public async Task Update(Vehicle vehicle)
         {
-            await using (connection)
-            {
-                await connection.ExecuteAsync(
+            await connection.ExecuteAsync(
                     "update vehicles set model_name=@Model_name, registration_number=@Registration_Number, weight=@Weight, manufacture_year=@Manufacture_Year, " +
-                    "mileage=@Mileage, color=@Color, volume=@Volume, vehicle_type_id=@Vehicle_Type_Id", vehicle);
-            }
+                    "mileage=@Mileage, color=@Color, volume=@Volume, vehicle_type_id=@Vehicle_Type_Id where id = @Id", vehicle);
         }
 
         public async Task Delete(int id)
         {
-            await using (connection)
-            {
-                await connection.ExecuteAsync("delete from vehicles where id = @Id", new {id});
-            }
+            await connection.ExecuteAsync("delete from vehicles where id = @Id", new {id});
         }
     }
 }
