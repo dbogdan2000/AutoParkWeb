@@ -1,0 +1,55 @@
+@model Vehicle
+
+@{
+    Layout = "~/Views/DefaultLayout.cshtml";
+}
+
+@{
+    ViewData["Title"] = "Edit Vehicle";
+}
+<h2>@ViewData["Title"]</h2>
+<br/>
+<form asp-action="EditConfirm" asp-controller="Vehicle">
+    <div>
+        <input type="hidden" asp-for="Id" />
+       <div class="form-group">
+           <label asp-for="Model_Name">Model Name:</label>
+           <input type="text" asp-for="Model_Name" class="form-control form-control-sm" />
+       </div>
+        <div class="form-group">
+            <label asp-for="Registration_Number">Registration Number:</label>
+            <input asp-for="Registration_Number" class="form-control  form-control-sm" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Weight">Weight:</label>
+            <input asp-for="Weight" class="form-control  form-control-sm" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Manufacture_Year">Manufacture Year:</label>
+            <input asp-for="Manufacture_Year" class="form-control  form-control-sm" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Mileage">Mileage:</label>
+            <input asp-for="Mileage" class="form-control  form-control-sm" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Color">Color:</label>
+            <input asp-for="Color" class="form-control  form-control-sm" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Volume">Volume:</label>
+            <input asp-for="Volume" class="form-control  form-control-sm" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Vehicle_Type_Id">Type Id:</label>
+            <input asp-for="Vehicle_Type_Id" class="form-control  form-control-sm" />
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Save" class="btn btn-success" />
+        </div>
+    </div>
+</form>
+ 
+<div>
+    <a asp-controller="Vehicle" asp-action="Index">Back to List</a>
+</div>

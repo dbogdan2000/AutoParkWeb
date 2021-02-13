@@ -28,6 +28,7 @@ namespace WebApplication
         {
             services.AddMvc();
             services.AddTransient<IRepository<VehicleType>, VehiclesTypesRepository >(provider => new VehiclesTypesRepository(_config.ConnectionString));
+            services.AddTransient<IRepository<Vehicle>, VehiclesRepository>(provider => new VehiclesRepository(_config.ConnectionString));
             services.AddControllersWithViews();
         }
 
@@ -49,7 +50,7 @@ namespace WebApplication
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=VehicleType}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

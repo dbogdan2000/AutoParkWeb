@@ -16,9 +16,9 @@ namespace WebApplication.Controllers
             _vehiclesTypesRepository = vehiclesTypesRepository;
         }
         
-        public ActionResult Create()
+        public  ActionResult Create()
         {
-             return View();
+            return View();
         }
         
         [HttpPost]
@@ -28,9 +28,9 @@ namespace WebApplication.Controllers
             return RedirectToAction("Index");
         }
       
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            var types =  _vehiclesTypesRepository.GetAll().Result;
+            var types = await _vehiclesTypesRepository.GetAll();
             return View(types);
         }
 
@@ -41,9 +41,9 @@ namespace WebApplication.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult Edit(int id)
+        public async Task<ActionResult> Edit(int id)
         {
-            VehicleType type = _vehiclesTypesRepository.Get(id).Result;
+            VehicleType type = await _vehiclesTypesRepository.Get(id);
             return View(type);
         }
 

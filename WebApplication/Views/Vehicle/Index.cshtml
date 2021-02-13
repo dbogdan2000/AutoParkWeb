@@ -1,0 +1,68 @@
+@model IEnumerable<Vehicle>
+
+@{
+    Layout = "~/Views/DefaultLayout.cshtml";
+}
+
+@{
+    ViewData["Title"] = "Vehicles";
+}
+<h2>@ViewData["Title"]</h2>
+<br/>
+<p>
+    <a asp-controller="Vehicle" asp-action="Create">
+        <button type="submit" class="btn btn-success">
+            Create vehicle
+        </button>
+    </a>
+</p>
+<br/>
+<p>
+    <a asp-controller="Home" asp-action="Index">
+        <button type="submit" class="btn btn-primary">
+            Back to main page
+        </button>
+    </a>
+</p>
+<br/>
+<table class="table">
+    <br/>
+    <tr>
+        <th>Model Name</th>
+        <th>Registration Number</th>
+        <th>Weight</th>
+        <th>Manufacture Year</th>
+        <th>Mileage</th>
+        <th>Color</th>
+        <th>Volume</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Model_Name</td>
+            <td>@item.Registration_Number</td>
+            <td>@item.Weight</td>
+            <td>@item.Manufacture_Year</td>
+            <td>@item.Mileage</td>
+            <td>@item.Color</td>
+            <td>@item.Volume</td>
+            <td>
+                <form method="post" asp-controller="Vehicle" asp-action="Delete" asp-route-id="@item.Id">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </td>
+            <td>
+                <form method="post" asp-controller="Vehicle" asp-action="Edit" asp-route-id="@item.Id">
+                    <button type="submit" class="btn btn-primary">Edit</button>
+                </form>
+            </td>
+            <td>
+                <form method="get" asp-controller="Vehicle" asp-action="GetInfo" asp-route-id="@item.Id">
+                    <button type="submit" class="btn btn-warning">Info</button>
+                </form>
+            </td>
+        </tr>
+    }
+</table>

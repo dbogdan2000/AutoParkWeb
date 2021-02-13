@@ -1,0 +1,36 @@
+@model Vehicle
+
+@{
+    Layout = "~/Views/DefaultLayout.cshtml";
+}
+
+@{
+    ViewData["Title"] = Model.Model_Name + " " + Model.Registration_Number + " info:";
+}
+<h2>@ViewData["Title"]</h2>
+<br/>
+<p>
+    <form asp-action="GetInfo" asp-controller="Vehicle">
+        <h5>Type: @Model.VehicleType.Type_Name</h5>
+        <br/>
+        <h5>Model Name: @Model.Model_Name</h5>
+        <br/>
+        <h5>Registration Number: @Model.Registration_Number</h5>
+        <br/>
+        <h5>Weight: @Model.Weight kg</h5>
+        <br/>
+        <h5>Manufacture Year: @Model.Manufacture_Year</h5>
+        <br/>
+        <h5>Mileage: @Model.Mileage km</h5>
+        <br/>
+        <h5>Color: @Model.Color</h5>
+        <br/>
+        <h5>Volume: @Model.Volume</h5>
+        <br/>
+       
+    </form>
+    <div>
+        <a asp-action="Index" asp-controller="Vehicle">Back to List</a>
+    </div>
+</p>
+
