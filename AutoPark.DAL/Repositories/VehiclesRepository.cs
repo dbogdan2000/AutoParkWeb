@@ -17,10 +17,7 @@ namespace AutoPark.DAL.Repositories
         
         public async Task<IEnumerable<Vehicle>> GetAll()
         {
-            await using (connection)
-            {
-                return await connection.QueryAsync<Vehicle>("select * from vehicles");
-            }
+            return await connection.QueryAsync<Vehicle>("select * from vehicles");
         }
 
         public async Task<Vehicle> Get(int id)

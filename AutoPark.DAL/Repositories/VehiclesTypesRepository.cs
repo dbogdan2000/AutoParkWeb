@@ -18,45 +18,29 @@ namespace AutoPark.DAL.Repositories
         
         public async Task<IEnumerable<VehicleType>> GetAll()
         {
-            await using (connection)
-            {
-                var types = await connection.QueryAsync<VehicleType>("select * from vehicle_types");
-                return types;
-            }
+            return await connection.QueryAsync<VehicleType>("select * from vehicle_types");;
         }
 
         public async Task<VehicleType> Get(int id)
         {
-            await using (connection)
-            {
-                return await connection.QueryFirstAsync<VehicleType>("select * from vehicle_types where id = @id", new {id});
-            }
+            return await connection.QueryFirstAsync<VehicleType>("select * from vehicle_types where id = @id", new {id});
         }
 
         public async Task Create(VehicleType type)
         {
-            await using (connection)
-            {
-                await connection.ExecuteAsync(
+            await connection.ExecuteAsync(
                     "insert into vehicle_types(type_name, tax_coefficient) values(@Type_Name, @Tax_Coefficient)", type);
-            }
         }
 
         public async Task Update(VehicleType type)
         {
-            await using (connection)
-            {
-                await connection.ExecuteAsync(
+            await connection.ExecuteAsync(
                     "update vehicle_types set type_name = @Type_Name, tax_coefficient = @Tax_Coefficient where id = @Id", type);
-            }
         }
 
         public async Task Delete(int id)
         {
-            await using (connection)
-            {
-                await connection.ExecuteAsync("delete from vehicle_types where id = @id", new {id});
-            }
+            await connection.ExecuteAsync("delete from vehicle_types where id = @id", new {id});
         }
     }
 }
