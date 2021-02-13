@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Threading.Tasks;
 using AutoPark.DAL.Entities;
 using AutoPark.DAL.Interfaces;
@@ -17,9 +18,33 @@ namespace WebApplication.Controllers
             _vehiclesTypesRepository = vehiclesTypesRepository;
         }
 
-        public async Task<ActionResult> Index()
+        [HttpGet]
+        public async Task<ActionResult> Index(string sortParameter)
         {
             var vehicles = await _vehiclesRepository.GetAll();
+            var types = await _vehiclesTypesRepository.GetAll();
+            foreach (var vehicle in vehicles)
+            {
+                foreach (var type in types)
+                {
+                    if (vehicle.Vehicle_Type_Id == type.Id)
+                    {
+                        vehicle.VehicleType = type;
+                    }
+                }
+            }
+            switch (sortParameter)
+            {
+                case "Model Name":
+                    vehicles = vehicles.OrderBy(vehicles => vehicles.Model_Name);
+                    break;
+                case "Type":
+                    vehicles = vehicles.OrderBy(vehicle => vehicle.VehicleType.Type_Name);
+                    break;
+                case "Mileage":
+                    vehicles = vehicles.OrderBy(vehicles => vehicles.Mileage);
+                    break;
+            }
             return View(vehicles);
         }
 

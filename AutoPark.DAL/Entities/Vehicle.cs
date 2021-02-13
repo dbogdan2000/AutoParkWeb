@@ -18,5 +18,13 @@ namespace AutoPark.DAL.Entities
         public VehicleType VehicleType { get; set; }
         
         public ICollection<Order> Orders { get; set; }
+
+
+        public double GetCalcTaxPerMonth()
+        {
+            return Weight * 0.0013 + VehicleType.Tax_Coefficient * 30 + 5;
+        }
+        
+        
     }
 }

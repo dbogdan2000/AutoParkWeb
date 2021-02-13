@@ -28,11 +28,18 @@
 <table class="table">
     <br/>
     <tr>
-        <th>Model Name</th>
+        <th>
+            <a asp-controller="Vehicle" asp-action="Index" asp-route-sortParameter="Type">Type</a>
+        </th>
+        <th>
+            <a asp-controller="Vehicle" asp-action="Index" asp-route-sortParameter="Model Name">Model Name</a>
+        </th>
         <th>Registration Number</th>
         <th>Weight</th>
         <th>Manufacture Year</th>
-        <th>Mileage</th>
+        <th>
+             <a asp-controller="Vehicle" asp-action="Index" asp-route-sortParameter="Mileage">Mileage</a>
+        </th>
         <th>Color</th>
         <th>Volume</th>
         <th></th>
@@ -41,6 +48,7 @@
     @foreach (var item in Model)
     {
         <tr>
+            <td>@item.VehicleType.Type_Name</td>
             <td>@item.Model_Name</td>
             <td>@item.Registration_Number</td>
             <td>@item.Weight</td>
@@ -54,7 +62,7 @@
                 </form>
             </td>
             <td>
-                <form method="post" asp-controller="Vehicle" asp-action="Edit" asp-route-id="@item.Id">
+                <form method="get" asp-controller="Vehicle" asp-action="Edit" asp-route-id="@item.Id">
                     <button type="submit" class="btn btn-primary">Edit</button>
                 </form>
             </td>

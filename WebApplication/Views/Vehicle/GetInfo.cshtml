@@ -27,7 +27,8 @@
         <br/>
         <h5>Volume: @Model.Volume</h5>
         <br/>
-       
+        <h5>Road tax amount per month: @Model.GetCalcTaxPerMonth().ToString("0.00")</h5>
+        <br/>
     </form>
     <div>
         <a asp-action="Index" asp-controller="Vehicle">Back to List</a>
