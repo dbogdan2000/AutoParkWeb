@@ -41,6 +41,10 @@
             <input asp-for="Volume" class="form-control  form-control-sm" />
         </div>
         <div class="form-group">
+            <label asp-for="Fuel_Consumption">Fuel Consumption:</label>
+            <input asp-for="Fuel_Consumption" class="form-control  form-control-sm" />
+        </div>
+        <div class="form-group">
             <label asp-for="Vehicle_Type_Id">Type Id:</label>
             <select class="form-control" asp-for="Vehicle_Type_Id" asp-items="@ViewBag.TypeList"></select>
         </div>

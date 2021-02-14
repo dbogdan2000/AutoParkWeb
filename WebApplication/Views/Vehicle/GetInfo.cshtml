@@ -27,7 +27,11 @@
         <br/>
         <h5>Volume: @Model.Volume</h5>
         <br/>
+        <h5>Fuel Consumption: @Model.Fuel_Consumption</h5>
+        <br/>
         <h5>Road tax amount per month: @Model.GetCalcTaxPerMonth().ToString("0.00")</h5>
+        <br/>
+        <h5>Max kilometers that the vehicle can drive with a full tank: @Model.GetMaxKilometers().ToString("0.00")</h5>
         <br/>
     </form>
     <div>

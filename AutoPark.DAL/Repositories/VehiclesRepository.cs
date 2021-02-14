@@ -28,15 +28,15 @@ namespace AutoPark.DAL.Repositories
         public async Task Create(Vehicle vehicle)
         {
             await connection.ExecuteAsync(
-                    "insert into vehicles(model_name, registration_number, weight, manufacture_year, mileage, color, volume, vehicle_type_id)" +
-                    "values(@Model_Name, @Registration_Number, @Weight, @Manufacture_Year, @Mileage, @Color, @Volume, @Vehicle_Type_Id)", vehicle);
+                    "insert into vehicles(model_name, registration_number, weight, manufacture_year, mileage, color, volume, vehicle_type_id, fuel_consumption)" +
+                    "values(@Model_Name, @Registration_Number, @Weight, @Manufacture_Year, @Mileage, @Color, @Volume, @Vehicle_Type_Id, @Fuel_Consumption)", vehicle);
         }
 
         public async Task Update(Vehicle vehicle)
         {
             await connection.ExecuteAsync(
                     "update vehicles set model_name=@Model_name, registration_number=@Registration_Number, weight=@Weight, manufacture_year=@Manufacture_Year, " +
-                    "mileage=@Mileage, color=@Color, volume=@Volume, vehicle_type_id=@Vehicle_Type_Id where id = @Id", vehicle);
+                    "mileage=@Mileage, color=@Color, volume=@Volume, vehicle_type_id=@Vehicle_Type_Id, fuel_consumption = @Fuel_Consumption where id = @Id", vehicle);
         }
 
         public async Task Delete(int id)

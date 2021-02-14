@@ -14,6 +14,8 @@ namespace AutoPark.DAL.Entities
         public Colors Color { get; set; }
         public int Volume { get; set; }
 
+        public double Fuel_Consumption { get; set; }
+
         public int Vehicle_Type_Id { get; set; }
         public VehicleType VehicleType { get; set; }
         
@@ -24,7 +26,11 @@ namespace AutoPark.DAL.Entities
         {
             return Weight * 0.0013 + VehicleType.Tax_Coefficient * 30 + 5;
         }
-        
+
+        public double GetMaxKilometers()
+        {
+            return Volume / Fuel_Consumption;
+        }
         
     }
 }
