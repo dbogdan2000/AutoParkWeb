@@ -25,7 +25,7 @@ namespace AutoPark.DAL.Repositories
         public async Task Create(OrderPart orderPart)
         {
             await connection.ExecuteAsync(
-                "insert into orders_parts(parts_number, part_id, order_id) values(@Parts_Mumber, @Part_Id, @Order_Id)",
+                "insert into orders_parts(parts_number, part_id, order_id) values(@Parts_Number, @Part_Id, @Order_Id)",
                 orderPart);
         }
 

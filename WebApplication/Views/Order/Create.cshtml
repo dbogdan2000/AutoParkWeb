@@ -1,0 +1,27 @@
+@model Order
+
+
+@{
+    Layout = "~/Views/DefaultLayout.cshtml";
+}
+
+@{
+    ViewData["Title"] = "New Order";
+}
+<h2>@ViewData["Title"]</h2>
+<br/>
+<form asp-action="Create" asp-controller="Order">
+    <div>
+       <div class="form-group">
+            <label asp-for="Vehicle_Id">Vehicle:</label>
+            <select class="form-control" asp-for="Vehicle_Id" asp-items="@ViewBag.VehiclesList"></select>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Save" class="btn btn-success" />
+        </div>
+    </div>
+</form>
+ 
+<div>
+    <a asp-action="Index" asp-controller="Order">Back to List</a>
+</div>
