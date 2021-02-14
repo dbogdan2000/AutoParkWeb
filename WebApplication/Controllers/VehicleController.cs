@@ -1,8 +1,11 @@
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoPark.DAL.Entities;
 using AutoPark.DAL.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace WebApplication.Controllers
 {
@@ -41,8 +44,11 @@ namespace WebApplication.Controllers
             return View(vehicles);
         }
 
-        public ActionResult Create()
+        [HttpGet]
+        public async Task<ActionResult> Create()
         {
+            var types = await _vehiclesTypesRepository.GetAll();
+            ViewBag.TypeList = types.Select(type => new SelectListItem(type.Type_Name,type.Id.ToString()));
             return View();
         }
 
@@ -62,7 +68,9 @@ namespace WebApplication.Controllers
         [HttpGet]
         public async Task<ActionResult> Edit(int id)
         {
-            Vehicle vehicle = await _vehiclesRepository.Get(id);
+            var vehicle = await _vehiclesRepository.Get(id);
+            var types = await _vehiclesTypesRepository.GetAll();
+            ViewBag.TypeList = types.Select(type => new SelectListItem(type.Type_Name,type.Id.ToString()));
             return View(vehicle);
         }
         

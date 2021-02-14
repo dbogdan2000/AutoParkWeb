@@ -1,0 +1,30 @@
+@model List<OrderPart>
+
+@{
+    Layout = "~/Views/DefaultLayout.cshtml";
+}
+
+@{
+    ViewData["Title"] = ViewBag.Vehicle  + " order info:";
+}
+<h2>@ViewData["Title"]</h2>
+<br/>
+<table class="table">
+    <br/>
+    <tr>
+        <th>Part Name: </th>
+        <th>Part Number: </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Part.Part_Name</td>
+            <td>@item.Parts_Number</td>
+        </tr>
+    }
+</table>
+<br/>
+<div>
+    <a asp-action="Index" asp-controller="Order">Back to List</a>
+</div>

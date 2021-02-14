@@ -31,6 +31,10 @@ namespace WebApplication
             services.AddTransient<IRepository<Vehicle>, VehiclesRepository>(provider => new VehiclesRepository(_config.ConnectionString));
             services.AddTransient<IRepository<Part>, PartsRepository>(provider =>
                 new PartsRepository(_config.ConnectionString));
+            services.AddTransient<IRepository<Order>, OrdersRepository>(provider =>
+                new OrdersRepository(_config.ConnectionString));
+            services.AddTransient<IRepository<OrderPart>, OrdersPartsRepository>(provider =>
+                new OrdersPartsRepository(_config.ConnectionString));
             services.AddControllersWithViews();
         }
 
